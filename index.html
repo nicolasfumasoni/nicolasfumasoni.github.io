@@ -1,13 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    bienvenido!!
-    <button onclick="alert('Hello')">Click me</button>
-</body>
+<html>
+  <head>
+    <title>Mi sitio web</title>
+  </head>
+  <body>
+    <header>
+      <h1>Bienvenido a mi sitio web</h1>
+      <nav>
+        <ul>
+          <li><a href="{{ site.baseurl }}/">Inicio</a></li>
+          <li><a href="{{ site.baseurl }}/acerca-de/">Acerca de</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <p>Bienvenido a mi sitio web, aquí podrás encontrar información sobre mis proyectos y trabajos.</p>
+    </main>
+    <footer>
+      <p>Copyright © {{ site.time | date: "%Y" }} Mi sitio web</p>
+    </footer>
+  </body>
 </html>
