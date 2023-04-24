@@ -1,5 +1,6 @@
 - name: Inicio
   link: /
-- name: Sobre mi
+- name: How made
+  link: /howmade.html
 - name: Trabajos propios
   link: /about.html

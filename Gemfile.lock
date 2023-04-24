@@ -8,6 +8,9 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.4)
       public_suffix (>= 2.0.2, < 6.0)
+    classifier-reborn (2.3.0)
+      fast-stemmer (~> 1.0)
+      matrix (~> 0.4)
     coffee-script (2.4.1)
       coffee-script-source
       execjs
@@ -28,6 +31,7 @@ GEM
       faraday-net_http (>= 2.0, < 3.1)
       ruby2_keywords (>= 0.0.4)
     faraday-net_http (3.0.2)
+    fast-stemmer (1.0.2)
     ffi (1.15.5)
     forwardable-extended (2.6.0)
     gemoji (3.0.1)
@@ -204,6 +208,7 @@ GEM
     listen (3.8.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
+    matrix (0.4.2)
     mercenary (0.3.6)
     minima (2.5.1)
       jekyll (>= 3.5, < 5.0)
@@ -247,12 +252,18 @@ GEM
       unf_ext
     unf_ext (0.0.8.2)
     unicode-display_width (1.8.0)
+    webrick (1.8.1)
+    yajl-ruby (1.4.3)
 
 PLATFORMS
   arm64-darwin-22
 
 DEPENDENCIES
-  github-pages
+  classifier-reborn
+  github-pages (~> 228)
+  public_suffix (~> 4.0)
+  webrick
+  yajl-ruby (~> 1.4.3)
 
 BUNDLED WITH
    2.3.26
