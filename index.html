@@ -3,83 +3,154 @@ layout: default
 title: Home
 ---
 
-<H1>Bienvenido a mi pagina web!</H1>
-<h4>Soy Nicolás Fumasoni, soy de Argentina y actualmente trabajo como desarrollador de software en MercadoLibre.</h4>
-<p>Mi primer trabajo en el área de informática fue de soporte técnico y las tareas que realizaba eran armar PC's,
-  repararlas,
-  configurarlas y hacer mejoras y mantenimientos en la red de internet.
-</p>
-<p>
-  En 2018 tuve la oportunidad de empezar en el desarrollo de software como consultor de aplicaciones en la nube en
-  Oracle. Durante ese
-  tiempo, hasta el 2021 tuve la experiencia de participar en proyectos grandes e influyentes de empresas del exterior
-  sobretodo de Brasil
-  aunque también de Colombia, Chile y Reino Unido.
-</p>
-<p>
-  En el 2022 pasé a trabajar a OneInfo consulting donde también me desempeñé como consultor cloud de Oracle aunque
-  solamente para
-  el producto Oracle Service Cloud. En esta oportunidad trabajé con clientes de Argentina y tuve que asumir más tareas
-  relacionadas
-  al desarrollo de páginas web tanto de backend como de frontend.
-</p>
-<p>
-  Actualmente, desde septiembre del 2022 trabajo en MercadoLibre como desarrollador de software, en el sector de
-  MercadoPago y mis
-  tareas involucran el análisis de datos y programación backend.
-</p>
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Iconos de Phosphor (Opcional pero recomendado) -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <style>
+        /* Personalización para Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-300 font-sans antialiased selection:bg-indigo-500 selection:text-white">
 
-<!-- <div class="modal" tabindex="-1" id="mensaje">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Página en construcción</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <p>Faltan varias mejoras al código de esta pagina que serán agregadas más adelante</p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
-          </div>
+    <!-- Navbar simple -->
+    <nav class="fixed w-full z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-800">
+        <div class="max-w-4xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-xl font-bold text-white tracking-tight">Nicolás<span class="text-indigo-500">.dev</span></a>
+            <!-- Botón de contacto simple -->
+            <a href="#contacto" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-sm font-medium rounded-lg transition-colors border border-slate-700">Contactar</a>
         </div>
-      </div>
-    </div> -->
+    </nav>
 
-<div id="carouselLogos" class="carousel slide" data-bs-ride="carousel" style="width: 200px; height: 200px;">
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselLogos" data-bs-slide-to="0" class="active" aria-current="true"
-      aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselLogos" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselLogos" data-bs-slide-to="2" aria-label="Slide 3"></button>
-  </div>
-  <div class="carousel-inner">
-    <div class="carousel-item active" data-bs-interval="1000">
-      <img src="/assets/images/Oneinfoconsulting-logo-color_0.png" class="d-block w-100" alt="">
-    </div>
-    <div class="carousel-item" data-bs-interval="1000">
-      <img src="/assets/images/Oracle_Logo.jpg" class="d-block w-100" alt="">
-    </div>
-    <div class="carousel-item" data-bs-interval="1000">
-      <img src="/assets/images/meli-logo.png" class="d-block w-100" alt="">
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselLogos" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselLogos" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
-{{page.year}}
-<script>
-  $(document).ready(function () {
-    if (localStorage.getItem('modalShown') === null) {
-      // Si no se ha mostrado, mostrar el modal y establecer 'modalShown' en el almacenamiento local
-      $('#mensaje').modal('show');
-      localStorage.setItem('modalShown', 'true');
-    }
-  });
-</script>
+    <!-- Hero Section -->
+    <header class="pt-32 pb-16 px-6">
+        <div class="max-w-4xl mx-auto text-center space-y-6 animate-fade-in-up">
+            <span class="inline-block py-1 px-3 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 text-sm font-medium mb-4">
+                💻 Full Stack & Backend Developer
+            </span>
+            <h1 class="text-4xl md:text-6xl font-extrabold text-white tracking-tight leading-tight">
+                Bienvenido a mi espacio web
+            </h1>
+            <p class="text-lg md:text-xl max-w-2xl mx-auto text-slate-400">
+                Soy <span class="text-indigo-400 font-semibold">Nicolás Fumasoni</span>. Desarrollador de Software apasionado por la arquitectura cloud y el análisis de datos.
+            </p>
+        </div>
+    </header>
+
+    <!-- Sección Principal: Experiencia (Timeline) -->
+    <main class="max-w-4xl mx-auto px-6 pb-20">
+        
+        <!-- Tarjeta de Bio Rápida -->
+        <section class="mb-12 bg-slate-800/50 rounded-2xl p-8 border border-slate-700 shadow-xl backdrop-blur-sm">
+            <div class="flex flex-col md:flex-row gap-6 items-start md:items-center">
+                <div>
+                    <h3 class="text-xl font-bold text-white mb-2">Sobre mí</h3>
+                    <p class="text-slate-400 leading-relaxed">
+                        Actualmente radicado en Argentina, con una sólida trayectoria internacional. Empecé en soporte técnico (hardware y redes) antes de saltar al mundo del desarrollo de software en 2018.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline de Experiencia -->
+        <h2 class="text-2xl font-bold text-white mb-8 flex items-center gap-3">
+            <i class="ph ph-briefcase text-indigo-500"></i> Experiencia Profesional
+        </h2>
+
+        <div class="relative border-l border-slate-700 ml-4 md:ml-6 space-y-12">
+            
+            <!-- Item 1: MercadoLibre -->
+            <div class="mb-8 relative group">
+                <span class="absolute -left-[5px] top-2 h-3 w-3 rounded-full bg-indigo-500 ring-4 ring-slate-900 group-hover:bg-white transition-colors"></span>
+                <h3 class="text-xl font-bold text-white group-hover:text-indigo-400 transition-colors">Desarrollador de Software</h3>
+                <p class="text-sm font-mono text-indigo-300 mb-2">MercadoLibre | Septiembre 2022 - Actualidad</p>
+                <div class="bg-slate-800 p-4 rounded-lg border-l-4 border-indigo-500 shadow-sm hover:shadow-md transition-shadow">
+                    <p class="text-slate-300">
+                        Trabajo en el sector de <span class="text-white font-semibold">MercadoPago</span>. Mis tareas principales involucran análisis de datos y programación backend para asegurar la escalabilidad del sistema.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Item 2: OneInfo Consulting -->
+            <div class="mb-8 relative group">
+                <span class="absolute -left-[5px] top-2 h-3 w-3 rounded-full bg-slate-600 ring-4 ring-slate-900 group-hover:bg-indigo-400 transition-colors"></span>
+                <h3 class="text-xl font-bold text-white group-hover:text-indigo-400 transition-colors">Consultor Cloud & Web Dev</h3>
+                <p class="text-sm font-mono text-indigo-300 mb-2">OneInfo Consulting | 2022</p>
+                <div class="bg-slate-800 p-4 rounded-lg border-l-4 border-slate-600 shadow-sm hover:shadow-md transition-shadow">
+                    <p class="text-slate-300">
+                        Consultor Cloud de Oracle (Service Cloud). Trabajé con clientes locales asumiendo un rol híbrido que combinaba consultoría cloud con desarrollo web Full Stack (Backend y Frontend).
+                    </p>
+                </div>
+            </div>
+
+            <!-- Item 3: Oracle Consulting -->
+            <div class="mb-8 relative group">
+                <span class="absolute -left-[5px] top-2 h-3 w-3 rounded-full bg-slate-600 ring-4 ring-slate-900 group-hover:bg-indigo-400 transition-colors"></span>
+                <h3 class="text-xl font-bold text-white group-hover:text-indigo-400 transition-colors">Consultor de Apps en la Nube</h3>
+                <p class="text-sm font-mono text-indigo-300 mb-2">Oracle | 2018 - 2021</p>
+                <div class="bg-slate-800 p-4 rounded-lg border-l-4 border-slate-600 shadow-sm hover:shadow-md transition-shadow">
+                    <p class="text-slate-300">
+                        Mi inicio en el desarrollo de software. Participación en proyectos grandes e influyentes para empresas internacionales, con foco especial en mercados de Brasil, Colombia, Chile y Reino Unido.
+                    </p>
+                </div>
+            </div>
+
+             <!-- Item 4: Soporte Técnico (Antiguo) -->
+             <div class="relative group opacity-75">
+                <span class="absolute -left-[5px] top-2 h-3 w-3 rounded-full bg-slate-600 ring-4 ring-slate-900"></span>
+                <h3 class="text-lg font-bold text-white">Inicio en IT: Soporte Técnico</h3>
+                <p class="text-sm font-mono text-indigo-300 mb-2">Early Career</p>
+                <div class="bg-slate-800/50 p-4 rounded-lg border-l-4 border-slate-600">
+                    <p class="text-slate-400">
+                        Armar PC's, reparaciones, mantenimiento de hardware y configuración/redes de internet.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Sección de Empresas (Logos) -->
+    <section class="bg-slate-800/30 py-16 border-t border-slate-800">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-xl font-bold text-white mb-8 uppercase tracking-widest text-sm">Tecnologías y Empresas</h2>
+            
+            <!-- Grid de Logos -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-2xl mx-auto">
+                
+                <!-- Logo 1 -->
+                <div class="p-6 bg-slate-900 rounded-xl border border-slate-700 hover:border-indigo-500 transition-colors duration-300 group cursor-pointer flex justify-center items-center h-24">
+                    <img src="/assets/images/Oneinfoconsulting-logo-color_0.png" class="h-full object-contain opacity-80 group-hover:opacity-100 transition-opacity" alt="OneInfo Consulting">
+                </div>
+
+                <!-- Logo 2 -->
+                <div class="p-6 bg-slate-900 rounded-xl border border-slate-700 hover:border-indigo-500 transition-colors duration-300 group cursor-pointer flex justify-center items-center h-24">
+                    <img src="/assets/images/Oracle_Logo.jpg" class="h-full object-contain opacity-80 group-hover:opacity-100 transition-opacity grayscale group-hover:grayscale-0 transition-all" alt="Oracle">
+                </div>
+
+                <!-- Logo 3 -->
+                <div class="p-6 bg-slate-900 rounded-xl border border-slate-700 hover:border-indigo-500 transition-colors duration-300 group cursor-pointer flex justify-center items-center h-24">
+                    <img src="/assets/images/meli-logo.png" class="h-full object-contain opacity-80 group-hover:opacity-100 transition-opacity" alt="MercadoLibre">
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contacto" class="bg-slate-950 py-8 border-t border-slate-900 text-center">
+        <p class="text-slate-500 text-sm">&copy; {{ page.year }} Nicolás Fumasoni. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>
