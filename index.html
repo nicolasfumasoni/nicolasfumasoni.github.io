@@ -10,52 +10,75 @@ title: Home
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Iconos de Phosphor (Opcional pero recomendado) -->
+    <!-- Iconos de Phosphor -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     
     <style>
-        /* Personalización para Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #0f172a; }
-        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+        /* Estilos para el menú hamburguesa (Mobile Menu) */
+        #mobile-menu { display: none; }
+        body.menu-open #mobile-menu { display: block; position: absolute; top: 100%; left: 0; width: 100%; background-color: #0f172a; border-bottom: 1px solid #334155; padding-top: 1rem;}
+        body.menu-open { overflow-x: hidden; } /* Evita scroll horizontal */
     </style>
 </head>
-<body class="bg-slate-900 text-slate-300 font-sans antialiased selection:bg-indigo-500 selection:text-white">
 
-    <!-- Navbar simple -->
-    <nav class="fixed w-full z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-800">
-        <div class="max-w-4xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-xl font-bold text-white tracking-tight">Nicolás<span class="text-indigo-500">.dev</span></a>
-            <!-- Botón de contacto simple -->
-            <a href="#contacto" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-sm font-medium rounded-lg transition-colors border border-slate-700">Contactar</a>
+<body class="bg-slate-900 text-slate-300 font-sans antialiased selection:bg-indigo-500 selection:text-white relative">
+
+    <!-- Navbar Responsiva -->
+    <nav class="fixed w-full z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-800 transition-all duration-300" id="navbar">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                
+                <!-- Logo -->
+                <a href="#" class="text-xl font-bold text-white tracking-tight z-50 relative">
+                    Nicolás<span class="text-indigo-500">.dev</span>
+                </a>
+
+                <!-- Desktop Menu (Links de escritorio) -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#experiencia" class="text-slate-300 hover:text-white transition-colors text-sm font-medium">Experiencia</a>
+                    <a href="#logos" class="text-slate-300 hover:text-white transition-colors text-sm font-medium">Tecnologías</a>
+                    <a href="#contacto" class="px-5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg shadow-lg shadow-indigo-500/30 transition-all transform hover:-translate-y-0.5 font-medium">Contactar</a>
+                </div>
+
+                <!-- Botón Hamburguesa (Móvil) -->
+                <button id="menu-btn" class="md:hidden text-white focus:outline-none z-50 relative p-2 rounded-md hover:bg-slate-800 transition-colors">
+                    <i class="ph ph-list text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu (Oculto por defecto) -->
+        <div id="mobile-menu" class="md:hidden flex flex-col space-y-4 px-6 py-4">
+            <a href="#experiencia" class="text-slate-300 hover:text-white transition-colors font-medium border-b border-slate-800 pb-2" onclick="toggleMenu()">Experiencia</a>
+            <a href="#logos" class="text-slate-300 hover:text-white transition-colors font-medium border-b border-slate-800 pb-2" onclick="toggleMenu()">Tecnologías</a>
+            <a href="#contacto" class="text-indigo-400 font-bold py-2" onclick="toggleMenu()">Contactar</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <header class="pt-32 pb-16 px-6">
+    <header class="pt-32 pb-16 px-4 sm:px-6">
         <div class="max-w-4xl mx-auto text-center space-y-6 animate-fade-in-up">
             <span class="inline-block py-1 px-3 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 text-sm font-medium mb-4">
                 💻 Full Stack & Backend Developer
             </span>
-            <h1 class="text-4xl md:text-6xl font-extrabold text-white tracking-tight leading-tight">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-white tracking-tight leading-tight px-2 sm:px-0">
                 Bienvenido a mi espacio web
             </h1>
-            <p class="text-lg md:text-xl max-w-2xl mx-auto text-slate-400">
+            <p class="text-lg md:text-xl max-w-2xl mx-auto text-slate-400 px-4 sm:px-0">
                 Soy <span class="text-indigo-400 font-semibold">Nicolás Fumasoni</span>. Desarrollador de Software apasionado por la arquitectura cloud y el análisis de datos.
             </p>
         </div>
     </header>
 
     <!-- Sección Principal: Experiencia (Timeline) -->
-    <main class="max-w-4xl mx-auto px-6 pb-20">
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 pb-20" id="experiencia">
         
         <!-- Tarjeta de Bio Rápida -->
-        <section class="mb-12 bg-slate-800/50 rounded-2xl p-8 border border-slate-700 shadow-xl backdrop-blur-sm">
-            <div class="flex flex-col md:flex-row gap-6 items-start md:items-center">
+        <section class="mb-12 bg-slate-800/50 rounded-2xl p-6 md:p-8 border border-slate-700 shadow-xl backdrop-blur-sm">
+            <div class="flex flex-col md:flex-row gap-4 items-start md:items-center text-left">
                 <div>
-                    <h3 class="text-xl font-bold text-white mb-2">Sobre mí</h3>
-                    <p class="text-slate-400 leading-relaxed">
+                    <h3 class="text-lg md:text-xl font-bold text-white mb-1">Sobre mí</h3>
+                    <p class="text-slate-400 leading-relaxed text-sm md:text-base">
                         Actualmente radicado en Argentina, con una sólida trayectoria internacional. Empecé en soporte técnico (hardware y redes) antes de saltar al mundo del desarrollo de software en 2018.
                     </p>
                 </div>
@@ -63,57 +86,67 @@ title: Home
         </section>
 
         <!-- Timeline de Experiencia -->
-        <h2 class="text-2xl font-bold text-white mb-8 flex items-center gap-3">
+        <h2 class="text-2xl font-bold text-white mb-8 flex items-center gap-3 px-1">
             <i class="ph ph-briefcase text-indigo-500"></i> Experiencia Profesional
         </h2>
 
-        <div class="relative border-l border-slate-700 ml-4 md:ml-6 space-y-12">
+        <!-- Contenedor de la línea vertical -->
+        <div class="relative pl-2 sm:pl-8 border-l border-slate-700 ml-1 sm:ml-4 space-y-12">
             
             <!-- Item 1: MercadoLibre -->
-            <div class="mb-8 relative group">
-                <span class="absolute -left-[5px] top-2 h-3 w-3 rounded-full bg-indigo-500 ring-4 ring-slate-900 group-hover:bg-white transition-colors"></span>
-                <h3 class="text-xl font-bold text-white group-hover:text-indigo-400 transition-colors">Desarrollador de Software</h3>
-                <p class="text-sm font-mono text-indigo-300 mb-2">MercadoLibre | Septiembre 2022 - Actualidad</p>
-                <div class="bg-slate-800 p-4 rounded-lg border-l-4 border-indigo-500 shadow-sm hover:shadow-md transition-shadow">
-                    <p class="text-slate-300">
-                        Trabajo en el sector de <span class="text-white font-semibold">MercadoPago</span>. Mis tareas principales involucran análisis de datos y programación backend para asegurar la escalabilidad del sistema.
-                    </p>
+            <div class="mb-6 relative group">
+                <!-- Punto de la línea -->
+                <span class="absolute -left-[3px] top-1 h-3 w-3 rounded-full bg-indigo-500 ring-4 ring-slate-900 group-hover:bg-white transition-colors sm:-left-[5px]"></span>
+                
+                <!-- Contenido -->
+                <div class="flex flex-col sm:flex-row gap-2 sm:gap-4">
+                    <div class="w-full sm:w-auto min-w-[140px]">
+                        <h3 class="text-lg font-bold text-white group-hover:text-indigo-400 transition-colors leading-tight">Desarrollador de Software</h3>
+                        <p class="text-sm font-mono text-indigo-300 mt-1">MercadoLibre | 2022 - Actualidad</p>
+                    </div>
+                    
+                    <!-- Tarjeta de descripción -->
+                    <div class="flex-1 bg-slate-800 p-4 rounded-lg border-l-4 border-indigo-500 shadow-sm hover:shadow-md transition-shadow">
+                        <p class="text-sm md:text-base text-slate-300 leading-relaxed">
+                            Trabajo en el sector de <span class="text-white font-semibold">MercadoPago</span>. Mis tareas principales involucran análisis de datos y programación backend para asegurar la escalabilidad del sistema.
+                        </p>
+                    </div>
                 </div>
             </div>
 
             <!-- Item 2: OneInfo Consulting -->
-            <div class="mb-8 relative group">
-                <span class="absolute -left-[5px] top-2 h-3 w-3 rounded-full bg-slate-600 ring-4 ring-slate-900 group-hover:bg-indigo-400 transition-colors"></span>
-                <h3 class="text-xl font-bold text-white group-hover:text-indigo-400 transition-colors">Consultor Cloud & Web Dev</h3>
-                <p class="text-sm font-mono text-indigo-300 mb-2">OneInfo Consulting | 2022</p>
-                <div class="bg-slate-800 p-4 rounded-lg border-l-4 border-slate-600 shadow-sm hover:shadow-md transition-shadow">
-                    <p class="text-slate-300">
-                        Consultor Cloud de Oracle (Service Cloud). Trabajé con clientes locales asumiendo un rol híbrido que combinaba consultoría cloud con desarrollo web Full Stack (Backend y Frontend).
-                    </p>
+            <div class="mb-6 relative group">
+                <span class="absolute -left-[3px] top-1 h-3 w-3 rounded-full bg-slate-600 ring-4 ring-slate-900 group-hover:bg-indigo-400 transition-colors sm:-left-[5px]"></span>
+                
+                <div class="flex flex-col sm:flex-row gap-2 sm:gap-4">
+                    <div class="w-full sm:w-auto min-w-[140px]">
+                        <h3 class="text-lg font-bold text-white group-hover:text-indigo-400 transition-colors leading-tight">Consultor Cloud & Web Dev</h3>
+                        <p class="text-sm font-mono text-indigo-300 mt-1">OneInfo Consulting | 2022</p>
+                    </div>
+
+                    <div class="flex-1 bg-slate-800 p-4 rounded-lg border-l-4 border-slate-600 shadow-sm hover:shadow-md transition-shadow">
+                        <p class="text-sm md:text-base text-slate-300 leading-relaxed">
+                            Consultor Cloud de Oracle (Service Cloud). Trabajé con clientes locales asumiendo un rol híbrido que combinaba consultoría cloud con desarrollo web Full Stack.
+                        </p>
+                    </div>
                 </div>
             </div>
 
-            <!-- Item 3: Oracle Consulting -->
-            <div class="mb-8 relative group">
-                <span class="absolute -left-[5px] top-2 h-3 w-3 rounded-full bg-slate-600 ring-4 ring-slate-900 group-hover:bg-indigo-400 transition-colors"></span>
-                <h3 class="text-xl font-bold text-white group-hover:text-indigo-400 transition-colors">Consultor de Apps en la Nube</h3>
-                <p class="text-sm font-mono text-indigo-300 mb-2">Oracle | 2018 - 2021</p>
-                <div class="bg-slate-800 p-4 rounded-lg border-l-4 border-slate-600 shadow-sm hover:shadow-md transition-shadow">
-                    <p class="text-slate-300">
-                        Mi inicio en el desarrollo de software. Participación en proyectos grandes e influyentes para empresas internacionales, con foco especial en mercados de Brasil, Colombia, Chile y Reino Unido.
-                    </p>
-                </div>
-            </div>
+            <!-- Item 3: Oracle -->
+            <div class="mb-6 relative group">
+                <span class="absolute -left-[3px] top-1 h-3 w-3 rounded-full bg-slate-600 ring-4 ring-slate-900 group-hover:bg-indigo-400 transition-colors sm:-left-[5px]"></span>
 
-             <!-- Item 4: Soporte Técnico (Antiguo) -->
-             <div class="relative group opacity-75">
-                <span class="absolute -left-[5px] top-2 h-3 w-3 rounded-full bg-slate-600 ring-4 ring-slate-900"></span>
-                <h3 class="text-lg font-bold text-white">Inicio en IT: Soporte Técnico</h3>
-                <p class="text-sm font-mono text-indigo-300 mb-2">Early Career</p>
-                <div class="bg-slate-800/50 p-4 rounded-lg border-l-4 border-slate-600">
-                    <p class="text-slate-400">
-                        Armar PC's, reparaciones, mantenimiento de hardware y configuración/redes de internet.
-                    </p>
+                <div class="flex flex-col sm:flex-row gap-2 sm:gap-4">
+                    <div class="w-full sm:w-auto min-w-[140px]">
+                        <h3 class="text-lg font-bold text-white group-hover:text-indigo-400 transition-colors leading-tight">Consultor Apps en la Nube</h3>
+                        <p class="text-sm font-mono text-indigo-300 mt-1">Oracle | 2018 - 2021</p>
+                    </div>
+
+                    <div class="flex-1 bg-slate-800 p-4 rounded-lg border-l-4 border-slate-600 shadow-sm hover:shadow-md transition-shadow">
+                        <p class="text-sm md:text-base text-slate-300 leading-relaxed">
+                            Inicio en el desarrollo de software. Participación en proyectos grandes e influyentes para empresas internacionales, con foco especial en Brasil y Reino Unido.
+                        </p>
+                    </div>
                 </div>
             </div>
 
@@ -121,25 +154,22 @@ title: Home
     </main>
 
     <!-- Sección de Empresas (Logos) -->
-    <section class="bg-slate-800/30 py-16 border-t border-slate-800">
+    <section id="logos" class="bg-slate-800/30 py-16 border-t border-slate-800">
         <div class="max-w-4xl mx-auto px-6 text-center">
             <h2 class="text-xl font-bold text-white mb-8 uppercase tracking-widest text-sm">Tecnologías y Empresas</h2>
             
             <!-- Grid de Logos -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-2xl mx-auto">
                 
-                <!-- Logo 1 -->
-                <div class="p-6 bg-slate-900 rounded-xl border border-slate-700 hover:border-indigo-500 transition-colors duration-300 group cursor-pointer flex justify-center items-center h-24">
+                <div class="p-4 bg-slate-900 rounded-xl border border-slate-700 hover:border-indigo-500 transition-colors duration-300 group cursor-pointer flex justify-center items-center h-24">
                     <img src="/assets/images/Oneinfoconsulting-logo-color_0.png" class="h-full object-contain opacity-80 group-hover:opacity-100 transition-opacity" alt="OneInfo Consulting">
                 </div>
 
-                <!-- Logo 2 -->
-                <div class="p-6 bg-slate-900 rounded-xl border border-slate-700 hover:border-indigo-500 transition-colors duration-300 group cursor-pointer flex justify-center items-center h-24">
+                <div class="p-4 bg-slate-900 rounded-xl border border-slate-700 hover:border-indigo-500 transition-colors duration-300 group cursor-pointer flex justify-center items-center h-24">
                     <img src="/assets/images/Oracle_Logo.jpg" class="h-full object-contain opacity-80 group-hover:opacity-100 transition-opacity grayscale group-hover:grayscale-0 transition-all" alt="Oracle">
                 </div>
 
-                <!-- Logo 3 -->
-                <div class="p-6 bg-slate-900 rounded-xl border border-slate-700 hover:border-indigo-500 transition-colors duration-300 group cursor-pointer flex justify-center items-center h-24">
+                <div class="p-4 bg-slate-900 rounded-xl border border-slate-700 hover:border-indigo-500 transition-colors duration-300 group cursor-pointer flex justify-center items-center h-24">
                     <img src="/assets/images/meli-logo.png" class="h-full object-contain opacity-80 group-hover:opacity-100 transition-opacity" alt="MercadoLibre">
                 </div>
 
@@ -148,9 +178,30 @@ title: Home
     </section>
 
     <!-- Footer -->
-    <footer id="contacto" class="bg-slate-950 py-8 border-t border-slate-900 text-center">
-        <p class="text-slate-500 text-sm">&copy; {{ page.year }} Nicolás Fumasoni. Todos los derechos reservados.</p>
+    <footer id="contacto" class="bg-slate-950 py-8 border-t border-slate-900 text-center text-sm text-slate-500">
+        <p>&copy; {{ page.year }} Nicolás Fumasoni. Todos los derechos reservados.</p>
     </footer>
+
+    <!-- Script simple para el menú móvil -->
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const btnIcon = document.querySelector('#menu-btn i');
+            
+            if (menu.style.display === 'block') {
+                menu.style.display = ''; // Volver al display none original de Tailwind
+                btnIcon.classList.remove('ph-x', 'text-3xl');
+                btnIcon.classList.add('ph-list', 'text-2xl');
+            } else {
+                menu.style.display = 'block';
+                btnIcon.classList.remove('ph-list', 'text-2xl');
+                btnIcon.classList.add('ph-x', 'text-3xl'); // Cambiar icono a X
+            }
+        }
+
+        // Script para el botón de hamburguesa
+        document.getElementById('menu-btn').addEventListener('click', toggleMenu);
+    </script>
 
 </body>
 </html>
