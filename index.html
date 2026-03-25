@@ -10,196 +10,205 @@ title: Home
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Iconos de Phosphor -->
+    <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     
+    <!-- Estilos personalizados para el menú móvil -->
     <style>
-        /* Estilos para el menú hamburguesa (Mobile Menu) */
+        /* Clase auxiliar para mostrar/ocultar menú */
         #mobile-menu { display: none; }
-        body.menu-open #mobile-menu { display: block; position: absolute; top: 100%; left: 0; width: 100%; background-color: #0f172a; border-bottom: 1px solid #334155; padding-top: 1rem;}
-        body.menu-open { overflow-x: hidden; } /* Evita scroll horizontal */
+        .menu-active #mobile-menu { display: flex; }
+        
+        /* Animación suave del icono de menú */
+        #menu-btn i { transition: transform 0.3s ease, opacity 0.3s ease; }
     </style>
 </head>
 
-<body class="bg-slate-900 text-slate-300 font-sans antialiased selection:bg-indigo-500 selection:text-white relative">
+<body class="bg-slate-950 text-slate-200 font-sans antialiased selection:bg-indigo-600 selection:text-white">
 
-    <!-- Navbar Responsiva -->
-    <nav class="fixed w-full z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-800 transition-all duration-300" id="navbar">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                
-                <!-- Logo -->
-                <a href="#" class="text-xl font-bold text-white tracking-tight z-50 relative">
-                    Nicolás<span class="text-indigo-500">.dev</span>
-                </a>
+    <!-- NAVBAR PRINCIPAL (Limpia y Única) -->
+    <nav id="navbar" class="fixed w-full z-40 top-0 bg-slate-950/80 backdrop-blur-md border-b border-slate-800 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            
+            <!-- Logo -->
+            <a href="#" class="text-xl font-bold text-white tracking-tight z-50 relative group">
+                Nicolás<span class="text-indigo-500 group-hover:text-indigo-400 transition-colors">.dev</span>
+            </a>
 
-                <!-- Desktop Menu (Links de escritorio) -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#experiencia" class="text-slate-300 hover:text-white transition-colors text-sm font-medium">Experiencia</a>
-                    <a href="#logos" class="text-slate-300 hover:text-white transition-colors text-sm font-medium">Tecnologías</a>
-                    <a href="#contacto" class="px-5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg shadow-lg shadow-indigo-500/30 transition-all transform hover:-translate-y-0.5 font-medium">Contactar</a>
-                </div>
+            <!-- Botón Hamburguesa (Solo visible en móvil) -->
+            <button id="menu-btn" class="md:hidden text-white focus:outline-none z-50 p-2 rounded hover:bg-slate-800 transition-colors relative" aria-label="Menú">
+                <i class="ph ph-list text-3xl"></i>
+            </button>
 
-                <!-- Botón Hamburguesa (Móvil) -->
-                <button id="menu-btn" class="md:hidden text-white focus:outline-none z-50 relative p-2 rounded-md hover:bg-slate-800 transition-colors">
-                    <i class="ph ph-list text-2xl"></i>
-                </button>
+            <!-- Links de Escritorio -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#experiencia" class="text-slate-400 hover:text-white transition-colors text-sm font-medium">Experiencia</a>
+                <a href="#logos" class="text-slate-400 hover:text-white transition-colors text-sm font-medium">Proyectos</a> <!-- Aquí podrías poner "How Made" -->
+                <a href="#" class="px-5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg shadow-lg shadow-indigo-900/50 transition-all transform hover:-translate-y-0.5 font-medium">Contactar</a>
             </div>
         </div>
 
-        <!-- Mobile Menu (Oculto por defecto) -->
-        <div id="mobile-menu" class="md:hidden flex flex-col space-y-4 px-6 py-4">
-            <a href="#experiencia" class="text-slate-300 hover:text-white transition-colors font-medium border-b border-slate-800 pb-2" onclick="toggleMenu()">Experiencia</a>
-            <a href="#logos" class="text-slate-300 hover:text-white transition-colors font-medium border-b border-slate-800 pb-2" onclick="toggleMenu()">Tecnologías</a>
-            <a href="#contacto" class="text-indigo-400 font-bold py-2" onclick="toggleMenu()">Contactar</a>
+        <!-- Menú Desplegable Móvil -->
+        <div id="mobile-menu" class="md:hidden bg-slate-900 border-t border-slate-800 absolute w-full shadow-xl flex-col items-center py-6 space-y-4">
+            <a href="#experiencia" class="text-lg text-slate-300 hover:text-white font-medium px-4 transition-colors" onclick="toggleMenu()">Experiencia</a>
+            <a href="#logos" class="text-lg text-slate-300 hover:text-white font-medium px-4 transition-colors" onclick="toggleMenu()">Proyectos / How Made</a> <!-- Enlace a trabajos propios -->
+            <a href="#" class="px-6 py-2 bg-indigo-600 rounded-lg text-white font-bold shadow-md">Contactar</a>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <header class="pt-32 pb-16 px-4 sm:px-6">
-        <div class="max-w-4xl mx-auto text-center space-y-6 animate-fade-in-up">
-            <span class="inline-block py-1 px-3 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 text-sm font-medium mb-4">
-                💻 Full Stack & Backend Developer
+    <!-- HERO SECTION -->
+    <header class="pt-32 pb-16 px-4 sm:px-6 lg:px-8 min-h-[50vh] flex items-center justify-center text-center">
+        <div class="max-w-3xl mx-auto space-y-6 animate-fade-in-up">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-900/30 border border-indigo-700 text-indigo-400 text-xs font-semibold uppercase tracking-wide mb-2">
+                <i class="ph-fill ph-code"></i> Full Stack Developer
             </span>
-            <h1 class="text-4xl md:text-6xl font-extrabold text-white tracking-tight leading-tight px-2 sm:px-0">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-white tracking-tight leading-tight">
                 Bienvenido a mi espacio web
             </h1>
-            <p class="text-lg md:text-xl max-w-2xl mx-auto text-slate-400 px-4 sm:px-0">
-                Soy <span class="text-indigo-400 font-semibold">Nicolás Fumasoni</span>. Desarrollador de Software apasionado por la arquitectura cloud y el análisis de datos.
+            <p class="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
+                Soy <span class="text-indigo-400 font-semibold">Nicolás Fumasoni</span>. Desarrollador especializado en arquitectura cloud y análisis de datos. Transformando problemas complejos en soluciones elegantes.
             </p>
         </div>
     </header>
 
-    <!-- Sección Principal: Experiencia (Timeline) -->
-    <main class="max-w-4xl mx-auto px-4 sm:px-6 pb-20" id="experiencia">
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 space-y-16">
         
-        <!-- Tarjeta de Bio Rápida -->
-        <section class="mb-12 bg-slate-800/50 rounded-2xl p-6 md:p-8 border border-slate-700 shadow-xl backdrop-blur-sm">
-            <div class="flex flex-col md:flex-row gap-4 items-start md:items-center text-left">
-                <div>
-                    <h3 class="text-lg md:text-xl font-bold text-white mb-1">Sobre mí</h3>
-                    <p class="text-slate-400 leading-relaxed text-sm md:text-base">
-                        Actualmente radicado en Argentina, con una sólida trayectoria internacional. Empecé en soporte técnico (hardware y redes) antes de saltar al mundo del desarrollo de software en 2018.
-                    </p>
-                </div>
-            </div>
+        <!-- Sección Sobre Mí -->
+        <section id="experiencia" class="bg-slate-900 rounded-xl p-6 md:p-8 border border-slate-800 shadow-sm hover:border-indigo-500/30 transition-colors duration-300">
+            <h2 class="text-2xl font-bold text-white mb-4 flex items-center gap-3">
+                <i class="ph ph-user-circle text-indigo-500"></i> Sobre mí
+            </h2>
+            <p class="text-slate-400 leading-relaxed text-sm md:text-base">
+                Actualmente radicado en Argentina, con una sólida trayectoria internacional. Empecé mi carrera en soporte técnico (hardware y redes), lo que me dio una base sólida de resolución de problemas antes de saltar al desarrollo de software en 2018. Mi enfoque combina la lógica del backend con la creatividad del frontend.
+            </p>
         </section>
 
         <!-- Timeline de Experiencia -->
-        <h2 class="text-2xl font-bold text-white mb-8 flex items-center gap-3 px-1">
-            <i class="ph ph-briefcase text-indigo-500"></i> Experiencia Profesional
-        </h2>
+        <div class="relative">
+            <h2 class="text-2xl font-bold text-white mb-8 flex items-center gap-3 px-1">
+                <i class="ph ph-briefcase text-indigo-500"></i> Trayectoria Profesional
+            </h2>
 
-        <!-- Contenedor de la línea vertical -->
-        <div class="relative pl-2 sm:pl-8 border-l border-slate-700 ml-1 sm:ml-4 space-y-12">
-            
-            <!-- Item 1: MercadoLibre -->
-            <div class="mb-6 relative group">
-                <!-- Punto de la línea -->
-                <span class="absolute -left-[3px] top-1 h-3 w-3 rounded-full bg-indigo-500 ring-4 ring-slate-900 group-hover:bg-white transition-colors sm:-left-[5px]"></span>
-                
-                <!-- Contenido -->
-                <div class="flex flex-col sm:flex-row gap-2 sm:gap-4">
-                    <div class="w-full sm:w-auto min-w-[140px]">
-                        <h3 class="text-lg font-bold text-white group-hover:text-indigo-400 transition-colors leading-tight">Desarrollador de Software</h3>
-                        <p class="text-sm font-mono text-indigo-300 mt-1">MercadoLibre | 2022 - Actualidad</p>
+            <!-- Línea vertical (Timeline) -->
+            <div class="absolute left-[19px] top-0 bottom-0 w-0.5 bg-slate-800 md:left-auto md:w-full md:block hidden">
+                <!-- En móvil se usa la columna izquierda, en desktop una línea central o lateral según preferencia -->
+            </div>
+
+            <div class="space-y-12 relative z-10">
+
+                <!-- Item 1: MercadoLibre (Actual) -->
+                <div class="flex flex-col md:flex-row gap-6 md:gap-8 items-start group">
+                    <!-- Punto de la línea en móvil -->
+                    <div class="md:hidden absolute left-[23px] top-0 mt-1 w-3 h-3 rounded-full bg-indigo-500 ring-4 ring-slate-950 z-20"></div>
+
+                    <!-- Fecha y Título (Columna Izquierda en Desktop, Arriba en Móvil) -->
+                    <div class="md:w-[180px] md:flex-shrink-0 md:text-right md:pr-4">
+                        <span class="inline-block px-2 py-1 bg-indigo-900/50 text-indigo-300 rounded text-xs font-mono mb-1 border border-indigo-500/20">Sept 2022 - Hoy</span>
+                        <h3 class="text-lg md:text-xl font-bold text-white group-hover:text-indigo-400 transition-colors leading-tight">
+                            Desarrollador de Software
+                        </h3>
                     </div>
-                    
-                    <!-- Tarjeta de descripción -->
-                    <div class="flex-1 bg-slate-800 p-4 rounded-lg border-l-4 border-indigo-500 shadow-sm hover:shadow-md transition-shadow">
+
+                    <!-- Tarjeta de Descripción -->
+                    <div class="flex-1 bg-slate-900 p-5 rounded-lg border-l-4 border-indigo-500 shadow-lg hover:shadow-indigo-500/10 transition-all">
                         <p class="text-sm md:text-base text-slate-300 leading-relaxed">
-                            Trabajo en el sector de <span class="text-white font-semibold">MercadoPago</span>. Mis tareas principales involucran análisis de datos y programación backend para asegurar la escalabilidad del sistema.
+                            En el sector de <span class="text-white font-semibold">MercadoPago</span>. Mis tareas involucran análisis de datos masivos y programación backend de alta performance para asegurar la escalabilidad del sistema.
                         </p>
                     </div>
                 </div>
-            </div>
 
-            <!-- Item 2: OneInfo Consulting -->
-            <div class="mb-6 relative group">
-                <span class="absolute -left-[3px] top-1 h-3 w-3 rounded-full bg-slate-600 ring-4 ring-slate-900 group-hover:bg-indigo-400 transition-colors sm:-left-[5px]"></span>
-                
-                <div class="flex flex-col sm:flex-row gap-2 sm:gap-4">
-                    <div class="w-full sm:w-auto min-w-[140px]">
-                        <h3 class="text-lg font-bold text-white group-hover:text-indigo-400 transition-colors leading-tight">Consultor Cloud & Web Dev</h3>
-                        <p class="text-sm font-mono text-indigo-300 mt-1">OneInfo Consulting | 2022</p>
+                <!-- Item 2: OneInfo -->
+                <div class="flex flex-col md:flex-row gap-6 md:gap-8 items-start group">
+                     <div class="md:hidden absolute left-[23px] top-0 mt-1 w-3 h-3 rounded-full bg-slate-500 ring-4 ring-slate-950 z-20"></div>
+
+                    <div class="md:w-[180px] md:flex-shrink-0 md:text-right md:pr-4">
+                        <span class="inline-block px-2 py-1 bg-slate-800 text-slate-300 rounded text-xs font-mono mb-1 border border-slate-700">2022</span>
+                        <h3 class="text-lg md:text-xl font-bold text-white group-hover:text-indigo-400 transition-colors leading-tight">
+                            Consultor Cloud & Web Dev
+                        </h3>
                     </div>
 
-                    <div class="flex-1 bg-slate-800 p-4 rounded-lg border-l-4 border-slate-600 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="flex-1 bg-slate-900 p-5 rounded-lg border-l-4 border-slate-600 shadow-sm hover:shadow-md transition-all">
                         <p class="text-sm md:text-base text-slate-300 leading-relaxed">
-                            Consultor Cloud de Oracle (Service Cloud). Trabajé con clientes locales asumiendo un rol híbrido que combinaba consultoría cloud con desarrollo web Full Stack.
+                            En OneInfo Consulting. Desarrollador Cloud de Oracle (Service Cloud) con un rol híbrido que combinaba consultoría técnica con desarrollo Full Stack (Backend y Frontend).
                         </p>
                     </div>
                 </div>
-            </div>
 
-            <!-- Item 3: Oracle -->
-            <div class="mb-6 relative group">
-                <span class="absolute -left-[3px] top-1 h-3 w-3 rounded-full bg-slate-600 ring-4 ring-slate-900 group-hover:bg-indigo-400 transition-colors sm:-left-[5px]"></span>
+                 <!-- Item 3: Oracle -->
+                 <div class="flex flex-col md:flex-row gap-6 md:gap-8 items-start group">
+                     <div class="md:hidden absolute left-[23px] top-0 mt-1 w-3 h-3 rounded-full bg-slate-500 ring-4 ring-slate-950 z-20"></div>
 
-                <div class="flex flex-col sm:flex-row gap-2 sm:gap-4">
-                    <div class="w-full sm:w-auto min-w-[140px]">
-                        <h3 class="text-lg font-bold text-white group-hover:text-indigo-400 transition-colors leading-tight">Consultor Apps en la Nube</h3>
-                        <p class="text-sm font-mono text-indigo-300 mt-1">Oracle | 2018 - 2021</p>
+                    <div class="md:w-[180px] md:flex-shrink-0 md:text-right md:pr-4">
+                        <span class="inline-block px-2 py-1 bg-slate-800 text-slate-300 rounded text-xs font-mono mb-1 border border-slate-700">2018 - 2021</span>
+                        <h3 class="text-lg md:text-xl font-bold text-white group-hover:text-indigo-400 transition-colors leading-tight">
+                            Consultor Apps en la Nube
+                        </h3>
                     </div>
 
-                    <div class="flex-1 bg-slate-800 p-4 rounded-lg border-l-4 border-slate-600 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="flex-1 bg-slate-900 p-5 rounded-lg border-l-4 border-slate-600 shadow-sm hover:shadow-md transition-all">
                         <p class="text-sm md:text-base text-slate-300 leading-relaxed">
-                            Inicio en el desarrollo de software. Participación en proyectos grandes e influyentes para empresas internacionales, con foco especial en Brasil y Reino Unido.
+                            Mi inicio en el desarrollo de software. Participación en proyectos grandes e influyentes para empresas internacionales, con foco especial en mercados de Brasil y Reino Unido.
                         </p>
                     </div>
                 </div>
-            </div>
 
+            </div>
         </div>
+
+        <!-- Sección Logos / Proyectos -->
+        <section id="logos" class="pt-10 border-t border-slate-800">
+             <h2 class="text-xl font-bold text-white mb-6 uppercase tracking-widest text-sm flex items-center gap-2">
+                <i class="ph ph-circles-three-plus"></i> Tecnologías y Socios
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-3xl mx-auto">
+                
+                <!-- Logo Card -->
+                <a href="#" class="group block p-6 bg-slate-900 rounded-xl border border-slate-800 hover:border-indigo-500/50 transition-all duration-300 text-center">
+                    <img src="/assets/images/Oneinfoconsulting-logo-color_0.png" class="h-12 mx-auto object-contain opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-transform" alt="OneInfo">
+                </a>
+
+                <!-- Logo Card -->
+                <a href="#" class="group block p-6 bg-slate-900 rounded-xl border border-slate-800 hover:border-indigo-500/50 transition-all duration-300 text-center">
+                    <img src="/assets/images/Oracle_Logo.jpg" class="h-12 mx-auto object-contain opacity-70 group-hover:opacity-100 grayscale group-hover:grayscale-0 transition-all" alt="Oracle">
+                </a>
+
+                 <!-- Logo Card -->
+                 <a href="#" class="group block p-6 bg-slate-900 rounded-xl border border-slate-800 hover:border-indigo-500/50 transition-all duration-300 text-center">
+                    <img src="/assets/images/meli-logo.png" class="h-12 mx-auto object-contain opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-transform" alt="MercadoLibre">
+                </a>
+
+            </div>
+        </section>
+
     </main>
 
-    <!-- Sección de Empresas (Logos) -->
-    <section id="logos" class="bg-slate-800/30 py-16 border-t border-slate-800">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <h2 class="text-xl font-bold text-white mb-8 uppercase tracking-widest text-sm">Tecnologías y Empresas</h2>
-            
-            <!-- Grid de Logos -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-2xl mx-auto">
-                
-                <div class="p-4 bg-slate-900 rounded-xl border border-slate-700 hover:border-indigo-500 transition-colors duration-300 group cursor-pointer flex justify-center items-center h-24">
-                    <img src="/assets/images/Oneinfoconsulting-logo-color_0.png" class="h-full object-contain opacity-80 group-hover:opacity-100 transition-opacity" alt="OneInfo Consulting">
-                </div>
-
-                <div class="p-4 bg-slate-900 rounded-xl border border-slate-700 hover:border-indigo-500 transition-colors duration-300 group cursor-pointer flex justify-center items-center h-24">
-                    <img src="/assets/images/Oracle_Logo.jpg" class="h-full object-contain opacity-80 group-hover:opacity-100 transition-opacity grayscale group-hover:grayscale-0 transition-all" alt="Oracle">
-                </div>
-
-                <div class="p-4 bg-slate-900 rounded-xl border border-slate-700 hover:border-indigo-500 transition-colors duration-300 group cursor-pointer flex justify-center items-center h-24">
-                    <img src="/assets/images/meli-logo.png" class="h-full object-contain opacity-80 group-hover:opacity-100 transition-opacity" alt="MercadoLibre">
-                </div>
-
-            </div>
-        </div>
-    </section>
-
     <!-- Footer -->
-    <footer id="contacto" class="bg-slate-950 py-8 border-t border-slate-900 text-center text-sm text-slate-500">
+    <footer class="bg-slate-950 border-t border-slate-800 py-8 text-center text-sm text-slate-500">
         <p>&copy; {{ page.year }} Nicolás Fumasoni. Todos los derechos reservados.</p>
     </footer>
 
-    <!-- Script simple para el menú móvil -->
+    <!-- Script para el menú -->
     <script>
         function toggleMenu() {
             const menu = document.getElementById('mobile-menu');
-            const btnIcon = document.querySelector('#menu-btn i');
+            const icon = document.querySelector('#menu-btn i');
             
-            if (menu.style.display === 'block') {
-                menu.style.display = ''; // Volver al display none original de Tailwind
-                btnIcon.classList.remove('ph-x', 'text-3xl');
-                btnIcon.classList.add('ph-list', 'text-2xl');
+            if (menu.style.display === 'flex') {
+                // Cerrar
+                menu.style.display = ''; 
+                icon.classList.remove('ph-x');
+                icon.classList.add('ph-list', 'text-3xl');
             } else {
-                menu.style.display = 'block';
-                btnIcon.classList.remove('ph-list', 'text-2xl');
-                btnIcon.classList.add('ph-x', 'text-3xl'); // Cambiar icono a X
+                // Abrir
+                menu.style.display = 'flex';
+                icon.classList.remove('ph-list', 'text-3xl');
+                icon.classList.add('ph-x', 'text-xl'); // Icono X más pequeño
             }
         }
 
-        // Script para el botón de hamburguesa
         document.getElementById('menu-btn').addEventListener('click', toggleMenu);
     </script>
 
